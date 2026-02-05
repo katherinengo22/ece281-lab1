@@ -8,7 +8,7 @@
 --| 2354 Fairchild Drive Ste 2F6     / /_/ /___/ / ___ |/ __/ / ___ |
 --| USAF Academy, CO 80840           \____//____/_/  |_/_/   /_/  |_|
 --| 
---| Documentation: 
+--| Documentation: No help.
 --| ---------------------------------------------------------------------------
 --|
 --| FILENAME      : thirtyOneDayMonth.vhd
