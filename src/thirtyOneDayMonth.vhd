@@ -8,6 +8,7 @@
 --| 2354 Fairchild Drive Ste 2F6     / /_/ /___/ / ___ |/ __/ / ___ |
 --| USAF Academy, CO 80840           \____//____/_/  |_/_/   /_/  |_|
 --| 
+--| Documentation: 
 --| ---------------------------------------------------------------------------
 --|
 --| FILENAME      : thirtyOneDayMonth.vhd
@@ -56,24 +57,40 @@ library ieee;
 entity thirtyOneDayMonth is 
   port(
 	i_A : in std_logic; -- one of four inputs
-	
-	
+	i_B : in std_logic; -- one of four inputs
+	i_C : in std_logic; -- one of four inputs
+	i_D : in std_logic; -- one of four inputs
 	
 						-- output
+						
+	o_Y : out std_logic -- output of the design 
+						
   );
 end thirtyOneDayMonth;
 
 architecture thirtyOneDayMonth_arch of thirtyOneDayMonth is 
 	-- include components declarations and signals
-	
+	signal w_sel : std_logic_vector (2 downto 0); -- MUX sel
 	--signals internal to the architecture are declared and initialized such as w_sel
   
 begin
 	-- CONCURRENT STATEMENTS---------------------------------------
 	--assigning names to reflect original schematics (for ease of understanding if you wish to)
 	w_sel(0) <= i_C;	-- one
-	--finish assigning signals
+	w_sel(1) <= i_B;    -- two
+	w_sel(2) <= i_A;    -- three
+	--finish assigning signalse
 	
-	--enter your logic here to implement the mux.  See VHDL reference sheet for MUX syntax.	
+	--enter your logic here to implement the mux.  See VHDL reference sheet for MUX syntax.
+	o_Y <= i_D when (w_sel = "000") else
+	       i_D when (w_sel = "001") else
+	       i_D when (w_sel = "010") else
+	       i_D when (w_sel = "011") else
+	       not i_D when (w_sel = "100") else
+	       not i_D when (w_sel = "101") else
+	       not i_D when (w_sel = "110") else
+	       not i_D when (w_sel = "111") else
+	       '0';
+
 	---------------------------------------------------------------	
 end thirtyOneDayMonth_arch;
